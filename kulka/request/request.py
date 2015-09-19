@@ -7,7 +7,7 @@ class Request(object):
     CID = None
     FMT = ''
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, *_, **__):
         if cls.DID is None or cls.CID is None:
             raise NotImplementedError()
 

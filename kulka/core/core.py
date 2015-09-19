@@ -20,11 +20,11 @@ class Kulka(object):
         self._sequence = (self._sequence + 1) & 0xFF
         return self._sequence
 
-    def _send(self, request):
-        request.sequence = self.sequence()
+    def _send(self, request_):
+        request_.sequence = self.sequence()
 
         try:
-            self._connection.send(request.tobytes())
+            self._connection.send(request_.tobytes())
             self._connection.recv(1024)
         except ConnectionLost:
             self._reconnect()
