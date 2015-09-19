@@ -20,7 +20,7 @@ class Connection(BaseConnection):
                                      socket.BTPROTO_RFCOMM)
                 sock.connect((addr, port))
                 return cls(sock)
-            except OSError as error:
+            except socket.error as error:
                 sock.close()
                 time.sleep(1)
 
