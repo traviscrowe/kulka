@@ -23,6 +23,10 @@ A python client for sphero
         kulka.set_inactivity_timeout(3600)
         kulka.roll(randint(0, 255), randint(0, 359))
 
+**INSTALLATION:**
+
+    pip install kulka
+
 **LICENSE:**
 
   Kulka is free software; you can redistribute it and/or modify it under the
