@@ -1,1 +1,1 @@
-from kulka.response.response import Response
+from kulka.response.response import parser
