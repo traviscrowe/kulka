@@ -12,7 +12,7 @@ def requirements():
 
 setup(
     name='Kulka',
-    version='0.2',
+    version='0.2.1',
     description='Sphero client',
     author='Karol Szuster',
     author_email='szuster.karol@gmail.com',
@@ -22,8 +22,9 @@ setup(
         'kulka',
         'kulka.connection',
         'kulka.connection.exceptions',
+        'kulka.core',
         'kulka.request',
-        'kulka.core'
+        'kulka.response',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
