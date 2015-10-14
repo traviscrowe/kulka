@@ -1,6 +1,7 @@
 from kulka import request
 from kulka.connection.exceptions import ConnectionLost
 from kulka.connection import Connection
+from kulka.response import parser
 
 
 class Kulka(object):
@@ -9,6 +10,7 @@ class Kulka(object):
         self._addr = addr
         self._connection = Connection.connect(addr)
         self._sequence = 0
+        self._recv_buffer = bytearray()
 
     def __enter__(self):
         return self
@@ -25,9 +27,20 @@ class Kulka(object):
 
         try:
             self._connection.send(request_.tobytes())
-            self._connection.recv(1024)
+            self._wait_for_ack(request_.sequence)
         except ConnectionLost:
             self._reconnect()
+
+    def _wait_for_ack(self, sequence):
+        while True:
+            try:
+                response, consumed = parser(self._recv_buffer)
+                self._recv_buffer = self._recv_buffer[consumed:]
+
+                if response.seq == sequence:
+                    break
+            except ValueError as e:
+                self._recv_buffer.extend(self._connection.recv(1024))
 
     def _reconnect(self):
         self._connection.close()
