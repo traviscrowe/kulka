@@ -55,5 +55,8 @@ class Kulka(object):
     def roll(self, speed=0, heading=0, state=1):
         return self._send(request.Roll(speed, heading, state))
 
+    def set_back_led(self, bright):
+        return self._send(request.SetBackLed(bright))
+
     def sleep(self, wakeup=0, macro=0, orb_basic=0):
         return self._send(request.Sleep(wakeup, macro, orb_basic))
