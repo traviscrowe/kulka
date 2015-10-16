@@ -42,7 +42,7 @@ class Kulka(object):
 
                 if response.seq == sequence:
                     break
-            except ValueError as e:
+            except ValueError:
                 self._recv_buffer.extend(self._connection.recv(1024))
 
     def _reconnect(self):
