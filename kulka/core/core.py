@@ -16,6 +16,9 @@ class Kulka(object):
         return self
 
     def __exit__(self, type_, value, traceback):
+        self.close()
+
+    def close(self):
         self._connection.close()
 
     def sequence(self):
