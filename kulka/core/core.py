@@ -40,7 +40,7 @@ class Kulka(object):
                 response, consumed = parser(self._recv_buffer)
                 self._recv_buffer = self._recv_buffer[consumed:]
 
-                if response.seq == sequence:
+                if getattr(response, 'seq', None) == sequence:
                     break
             except ValueError:
                 self._recv_buffer.extend(self._connection.recv(1024))
