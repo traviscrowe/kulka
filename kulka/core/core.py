@@ -61,5 +61,8 @@ class Kulka(object):
     def set_back_led(self, bright):
         return self._send(request.SetBackLed(bright))
 
+    def set_heading(self, heading):
+        return self._send(request.SetHeading(heading))
+
     def sleep(self, wakeup=0, macro=0, orb_basic=0):
         return self._send(request.Sleep(wakeup, macro, orb_basic))
