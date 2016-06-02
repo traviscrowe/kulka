@@ -52,8 +52,8 @@ class Kulka(object):
     def set_inactivity_timeout(self, timeout):
         return self._send(request.SetInactivityTimeout(timeout))
 
-    def set_rgb(self, red, green, blue, flag=0):
-        return self._send(request.SetRGB(red, green, blue, flag))
+    def set_rgb(self, red, green, blue):
+        return self._send(request.SetRGB(red, green, blue))
 
     def roll(self, speed=0, heading=0, state=1):
         return self._send(request.Roll(speed, heading, state))

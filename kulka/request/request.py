@@ -1,4 +1,5 @@
 import struct
+import pdb
 
 
 class Request(object):
@@ -37,10 +38,14 @@ class Request(object):
             packet.append(self.sequence)
 
         if self._data:
-            try:
-                data = struct.pack(self.FMT, *self._data)
-            except struct.error as exception:
-                raise ValueError(str(exception))
+            print(self.FMT)
+            print(self._data)
+            data = struct.pack(self.FMT, *self._data)
+            #
+            # try:
+            #     data = struct.pack(self.FMT, *self._data)
+            # except struct.error as exception:
+            #     raise ValueError(str(exception))
 
             packet.append(len(data) + 1)
             packet.extend(data)

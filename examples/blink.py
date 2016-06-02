@@ -3,8 +3,8 @@ import time
 
 
 def main():
-    with open('mykulka.txt') as file_:
-        addr = file_.readline().strip()
+    with open('mysphero.txt') as file_:
+       addr = file_.readline().strip()
 
     with Kulka(addr) as kulka:
         kulka.set_inactivity_timeout(3600)
