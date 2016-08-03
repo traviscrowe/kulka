@@ -9,7 +9,7 @@ def main():
     with Kulka(addr) as kulka:
         kulka.set_inactivity_timeout(3600)
 
-        for _ in xrange(10):
+        for _ in range(10):
             kulka.set_rgb(0xFF, 0, 0)
             time.sleep(0.1)
             kulka.set_rgb(0, 0, 0)
